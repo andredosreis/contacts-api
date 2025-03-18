@@ -113,8 +113,10 @@ router.get('/:id', async (req, res) => {
     }
     res.json(contact);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to get contact' });
+    console.error("Erro ao buscar contato:", error); // Adiciona log para depuração
+    res.status(500).json({ error: 'Failed to get contact', details: error.message });
   }
+  
 });
 
 /**
@@ -211,7 +213,7 @@ router.delete('/:id', async (req, res) => {
     }
     const deletedContact = await Contact.findByIdAndDelete(req.params.id);
     if (!deletedContact) return res.status(404).json({ error: 'Contact not found' });
-    res.json({ message: 'Contact deleted successfully' });
+    res.status(200).json({ message: 'Contact deleted successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Failed to delete contact' });
   }
