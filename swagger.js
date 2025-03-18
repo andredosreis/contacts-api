@@ -14,6 +14,10 @@ const options = {
         url: 'http://localhost:3000', // You can change this later if needed
         description: 'Local Development Server'
       },
+      {
+        url: 'https://contacts-api-bih9.onrender.com', // Replace with your production URL in Render
+        description: 'Render Production Server'
+      }
     ],
   },
   apis: ['./routes/*.js'], // Corrected: 'apis' should be outside 'definition' and only once
