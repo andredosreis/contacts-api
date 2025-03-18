@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const setupSwagger = require('./swagger');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,6 +17,7 @@ mongoose
     .catch(err => console.error(err));
     
 // Rota de contatos
+setupSwagger(app); // ativa a documentação Swagger
 
 app.use('/contacts', require('./routes/contacts'));// integração com o arquivo routes/contacts.js
 
